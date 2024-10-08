@@ -40,4 +40,43 @@ public class OrderManagerTest {
         Product tShirt = productFactory.createProduct("clothing", "T-shirt", 50, 20);
         assertEquals(22.0, tShirt.calculateTotalPrice(), 0.01);
     }
+
+
+    @Test
+    public void testSortByTotalPrice() {
+        List<Product> products = new ArrayList<>();
+        ProductFactory productFactory=new ProductFactory();
+        products.add(productFactory.createProduct("electronics", "Acer Laptop", 10, 1000));
+        products.add(productFactory.createProduct("electronics", "Lenovo Laptop", 10, 1000));
+        products.add(productFactory.createProduct("clothing", "T-shirt", 50, 20));
+        products.add(productFactory.createProduct("furniture", "Sofa", 5, 500));
+        products.add(productFactory.createProduct("electronics", "Smartphone", 30, 700));
+        products.add(productFactory.createProduct("electronics", "Smartphone", 37, 700));
+        products.add(productFactory.createProduct("furniture", "Table", 8, 300));
+
+
+        OrderManager.sortProducts(products);
+        assertEquals("T-shirt", products.get(0).getProductName());
+        assertEquals("Table", products.get(1).getProductName());
+        assertEquals("Sofa", products.get(2).getProductName());
+    }
+
+
+    @Test
+    public void testSortByNameWhenPricesEqual() {
+        List<Product> products = new ArrayList<>();
+        ProductFactory productFactory=new ProductFactory();
+        products.add(productFactory.createProduct("electronics", "Acer Laptop", 10, 1000));
+        products.add(productFactory.createProduct("electronics", "Lenovo Laptop", 10, 1000));
+        products.add(productFactory.createProduct("clothing", "T-shirt", 50, 20));
+        products.add(productFactory.createProduct("furniture", "Sofa", 5, 500));
+        products.add(productFactory.createProduct("electronics", "Smartphone", 30, 700));
+        products.add(productFactory.createProduct("electronics", "Smartphone", 37, 700));
+        products.add(productFactory.createProduct("furniture", "Table", 8, 300));
+
+        OrderManager.sortProducts(products);
+        assertEquals("Acer Laptop", products.get(5).getProductName());
+        assertEquals("Lenovo Laptop", products.get(6).getProductName());
+    }
+
 }
