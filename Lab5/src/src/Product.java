@@ -1,4 +1,6 @@
-abstract class Product {
+package src;
+
+public abstract class Product {
     protected String productName;
     protected int stockQuantity;
     protected double unitPrice;

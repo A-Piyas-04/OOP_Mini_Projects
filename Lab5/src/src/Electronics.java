@@ -1,3 +1,5 @@
+package src;
+
 public  class Electronics extends Product{
     public Electronics(String productName, int stockQuantity, double unitPrice) {
         super(productName, stockQuantity, unitPrice);

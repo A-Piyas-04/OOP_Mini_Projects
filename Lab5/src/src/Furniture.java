@@ -1,3 +1,5 @@
+package src;
+
 public class Furniture extends Product{
 
     public Furniture(String productName, int stockQuantity, double unitPrice) {
