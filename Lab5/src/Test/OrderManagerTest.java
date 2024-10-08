@@ -15,20 +15,6 @@ import java.util.List;
 public class OrderManagerTest {
     public static void main(String[] args) {
 
-        List<Product> products = new ArrayList<>();
-        ProductFactory productFactory = new ProductFactory();
-
-        products.add(productFactory.createProduct("electronics", "Acer Laptop", 10, 1000));
-        products.add(productFactory.createProduct("electronics", "Lenovo Laptop", 10, 1000));
-        products.add(productFactory.createProduct("clothing", "T-shirt", 50, 20));
-        products.add(productFactory.createProduct("furniture", "Sofa", 5, 500));
-        products.add(productFactory.createProduct("electronics", "Smartphone", 30, 700));
-        products.add(productFactory.createProduct("electronics", "Smartphone", 37, 700));
-        products.add(productFactory.createProduct("furniture", "Table", 8, 300));
-
-
-        OrderManager.sortProducts(products);
-
 
     }
     @Test
@@ -78,5 +64,68 @@ public class OrderManagerTest {
         assertEquals("Acer Laptop", products.get(5).getProductName());
         assertEquals("Lenovo Laptop", products.get(6).getProductName());
     }
+
+
+
+    @Test
+    public void testTotalPriceCalculationForClothing() {
+        List<Product> products = new ArrayList<>();
+        ProductFactory productFactory=new ProductFactory();
+
+        products.add(productFactory.createProduct("electronics", "Acer Laptop", 10, 1000));
+        products.add(productFactory.createProduct("electronics", "Lenovo Laptop", 10, 1000));
+        products.add(productFactory.createProduct("clothing", "T-shirt", 50, 20));
+        products.add(productFactory.createProduct("furniture", "Sofa", 5, 500));
+        products.add(productFactory.createProduct("electronics", "Smartphone", 30, 700));
+        products.add(productFactory.createProduct("electronics", "Smartphone", 37, 700));
+        products.add(productFactory.createProduct("furniture", "Table", 8, 300));
+
+        OrderManager.sortProducts(products);
+
+
+        Product tShirt = productFactory.createProduct("clothing", "T-shirt", 50, 20);
+        assertEquals(22.0, tShirt.calculateTotalPrice(), 0.01);  // 20 + 10% tax
+    }
+
+
+    @Test
+    public void testSortingByTotalPrice() {
+        List<Product> products = new ArrayList<>();
+        ProductFactory productFactory=new ProductFactory();
+
+        products.add(productFactory.createProduct("electronics", "Acer Laptop", 10, 1000));  // 1150
+        products.add(productFactory.createProduct("clothing", "T-shirt", 50, 20));            // 22
+        products.add(productFactory.createProduct("furniture", "Sofa", 5, 500));              // 540
+
+        OrderManager.sortProducts(products);
+
+        assertEquals("T-shirt", products.get(0).getProductName());      // Lowest price
+        assertEquals("Sofa", products.get(1).getProductName());         // Middle price
+        assertEquals("Acer Laptop", products.get(2).getProductName());  // Highest price
+    }
+
+
+    @Test
+    public void testSortingWithMixedCategories() {
+
+        List<Product> products = new ArrayList<>();
+        ProductFactory productFactory=new ProductFactory();
+
+
+        products.add(productFactory.createProduct("electronics", "Smartphone", 30, 700)); // 805
+        products.add(productFactory.createProduct("furniture", "Table", 8, 300));         // 324
+        products.add(productFactory.createProduct("clothing", "T-shirt", 50, 20));        // 22
+
+        OrderManager.sortProducts(products);
+
+        assertEquals("T-shirt", products.get(0).getProductName());  // Lowest price
+        assertEquals("Table", products.get(1).getProductName());    // Middle price
+        assertEquals("Smartphone", products.get(2).getProductName()); // Highest price
+    }
+
+
+
+
+
 
 }
