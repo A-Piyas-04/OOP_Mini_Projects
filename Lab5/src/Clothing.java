@@ -5,6 +5,6 @@ public class Clothing extends Product{
 
     @Override
     public double calculateTotalPrice() {
-        return 0;
+        return (unitPrice*1.1);
     }
 }
