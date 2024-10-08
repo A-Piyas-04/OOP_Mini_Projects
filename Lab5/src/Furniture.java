@@ -1,7 +1,7 @@
 public class Furniture extends Product{
 
-    public Furniture(String name, int stockQuantity, double unitPrice) {
-        super(name, stockQuantity, unitPrice);
+    public Furniture(String productName, int stockQuantity, double unitPrice) {
+        super(productName, stockQuantity, unitPrice);
     }
 
     @Override

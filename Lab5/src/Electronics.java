@@ -1,6 +1,6 @@
 public  class Electronics extends Product{
-    public Electronics(String name, int stockQuantity, double unitPrice) {
-        super(name, stockQuantity, unitPrice);
+    public Electronics(String productName, int stockQuantity, double unitPrice) {
+        super(productName, stockQuantity, unitPrice);
     }
 
     @Override
