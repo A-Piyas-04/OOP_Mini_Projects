@@ -23,19 +23,27 @@ public class UserManagementSystem {
     }
 
     public void loadUsersFromFile(String filePath) {
-        try {
-            List<String> lines = FileHandler.readFile(filePath);
+        try {List<String> lines = FileHandler.readFile(filePath);
             for (String line : lines) {
                 String[] fields = line.split(",");
                 String userId = fields[0];
                 String username = fields[1];
                 String email = fields[2];
                 String password = fields[3];
-                UserType userType = UserType.valueOf(fields[4]);
+                UserType userType = UserType.valueOf(fields[4].toUpperCase()); // Ensure case-insensitivity
+
                 switch (userType) {
-                    case ADMIN -> users.add(new AdminUser(userId, username, email, password));
-                    case POWER -> users.add(new PowerUser(userId, username, email, password));
-                    case REGULAR -> users.add(new RegularUser(userId, username, email, password));
+                    case ADMIN:
+                        users.add(new AdminUser(userId, username, email, password));
+                        break;
+                    case POWER:
+                        users.add(new PowerUser(userId, username, email, password));
+                        break;
+                    case REGULAR:
+                        users.add(new RegularUser(userId, username, email, password));
+                        break;
+                    default:
+                        throw new IllegalArgumentException("Unknown user type: " + userType);
                 }
             }
         } catch (Exception e) {
