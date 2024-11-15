@@ -10,5 +10,17 @@ public abstract class User {
         this.email = email;
         this.password = password;
     }
+    public abstract void authenticate(String password);
 
+    public String getUserId() {
+        return userId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 }
