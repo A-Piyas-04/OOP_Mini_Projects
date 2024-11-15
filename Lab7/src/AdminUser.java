@@ -59,6 +59,15 @@ public class AdminUser extends User implements Administration {
         }
     }
 
+
+    @Override
+    public void addAdminUser(String userId, String username, String email, String password) {
+        AdminUser newAdmin = new AdminUser(userId, username, email, password);
+        UserManagementSystem.getInstance().getAdminUsers().add(newAdmin);
+        UserManagementSystem.getInstance().saveAdminsToFile("Admin.csv");
+        System.out.println("Admin user added and saved to Admin.csv successfully.");
+    }
+
     @Override
     public void renameFile(String oldFileName, String newFileName) {
         //
