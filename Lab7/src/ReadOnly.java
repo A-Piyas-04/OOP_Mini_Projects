@@ -1,3 +1,3 @@
-public interface RaedOnly {
+public interface ReadOnly {
     void viewUserDetails();
 }
