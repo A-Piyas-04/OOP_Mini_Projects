@@ -1,26 +1,41 @@
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 class CSVInvoice implements Invoice {
     @Override
     public void generateInvoice(Order order) throws IOException {
-        String fileName = "invoices/Invoice_" + System.currentTimeMillis() + ".csv";
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
-            writer.println("Item,Quantity,Price");
+        // Generate unique filename using timestamp
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String filename = "invoices/order_invoice_" + timestamp + ".csv";
 
-            for (Yogurt yogurt : order.yogurts)
-                writer.println(yogurt.getName() + ",1," + yogurt.getPricePerScoop());
+        FileWriter writer = new FileWriter(filename);
 
-            for (Toppings topping : order.toppings)
-                writer.println(topping.getName() + ",1," + topping.getPrice());
+        writer.write("Ingredients,Amount,Price\n");
 
-            writer.println("Container," + order.containerType + "," + order.containerPrice);
-            writer.println("Subtotal,-," + order.calculateSubtotal());
-            writer.println("Tax,-," + (order.calculateSubtotal() * 0.08));
-            writer.println("Total Amount Due,-," + order.calculateTotal());
 
-            System.out.println("Invoice saved as: " + fileName);
+
+        for (Yogurt yogurt : order.getYogurts()) {
+            writer.write(yogurt.getName() + "," + yogurt.getScoops() + "," + String.format("%.2f", yogurt.getTotalPrice()) + "\n");
         }
+
+
+        for (Toppings topping : order.getToppings()) {
+            writer.write(topping.getName() + ",1," + String.format("%.2f", topping.getPrice()) + "\n");
+        }
+
+
+        if (order.getContainerPrice() > 0) {
+            writer.write("Glass Jar,-," + String.format("%.2f", order.getContainerPrice()) + "\n");
+        }
+
+
+        writer.write("Subtotal,-," + String.format("%.2f", order.calculateSubtotal()) + "\n");
+        writer.write("Tax,-," + String.format("%.2f", order.calculateTax()) + "\n");
+        writer.write("Total Amount Due,-," + String.format("%.2f", order.calculateTotal()) + "\n");
+
+        writer.close();
+        System.out.println("Invoice saved as: " + filename);
     }
 }

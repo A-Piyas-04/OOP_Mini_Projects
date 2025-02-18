@@ -2,11 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Order {
-    List<Yogurt> yogurts;
-    List<Toppings> toppings;
-    String containerType;
-    private static final double TAX_RATE = 0.08;
-    double containerPrice;
+    private List<Yogurt> yogurts;
+    private List<Toppings> toppings;
+    private String containerType;
+    private double containerPrice;
 
     public Order(String containerType) {
         this.yogurts = new ArrayList<>();
@@ -15,37 +14,42 @@ class Order {
         this.containerPrice = containerType.equalsIgnoreCase("glass") ? 5.00 : 0.00;
     }
 
-    public void addYogurt(Yogurt yogurt){
-         yogurts.add(yogurt);
+    public void addYogurt(Yogurt yogurt) {
+        yogurts.add(yogurt);
     }
 
-    public void addToppings(Toppings topping){
+    public void addToppings(Toppings topping) {
         toppings.add(topping);
     }
 
+    public List<Yogurt> getYogurts() {
+        return yogurts;
+    }
+
+    public List<Toppings> getToppings() {
+        return toppings;
+    }
+
+    public double getContainerPrice() {
+        return containerPrice;
+    }
+
     public double calculateSubtotal() {
-        double total = containerPrice;
-        for (Yogurt yogurt : yogurts) total += yogurt.getTotalPrice();
-        for (Toppings Toppings : toppings) total += Toppings.getPrice();
-        return total;
+        double subtotal = containerPrice;
+        for (Yogurt yogurt : yogurts) {
+            subtotal += yogurt.getTotalPrice(); // Multiple scoops handled correctly
+        }
+        for (Toppings topping : toppings) {
+            subtotal += topping.getPrice();
+        }
+        return subtotal;
+    }
+
+    public double calculateTax() {
+        return calculateSubtotal() * 0.08;
     }
 
     public double calculateTotal() {
-        double subtotal = calculateSubtotal();
-        return subtotal + (subtotal * TAX_RATE);
-    }
-
-    public void printOrderDetails() {
-        System.out.println("Yogurt Shop Invoice");
-        for (Yogurt yogurt : yogurts)
-            System.out.println(yogurt.getName() + " - 1 scoop : $" + yogurt.getTotalPrice());
-
-        for (Toppings Toppings : toppings)
-            System.out.println(Toppings.getName() + " - 1 time : $" + Toppings.getPrice());
-
-        System.out.println("Container Type: " + containerType + " - $" + containerPrice);
-        System.out.println("Subtotal: $" + calculateSubtotal());
-        System.out.println("Tax : $" + (calculateSubtotal() * TAX_RATE));
-        System.out.println("Total Amount Due: $" + calculateTotal());
+        return calculateSubtotal() + calculateTax();
     }
 }
