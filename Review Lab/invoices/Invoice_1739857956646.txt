@@ -1,0 +1,9 @@
+===== Yogurt Shop Invoice =====
+
+Pistachio Delight - 1 scoop: $3.25
+Sprinkles - 1 time: $0.3
+
+Container Type: paper - $0.0
+Subtotal: $3.55
+Tax : $0.284
+Total Amount Due: $3.8339999999999996
