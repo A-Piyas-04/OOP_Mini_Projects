@@ -12,7 +12,7 @@ class TextInvoice implements Invoice {
 
         FileWriter writer = new FileWriter(filename);
 
-        writer.write("Yogurt Shop Invoice\n\n");
+        writer.write("=======) Yogurt Shop Invoice (=======\n\n");
 
 
         for (Yogurt yogurt : order.getYogurts()) {

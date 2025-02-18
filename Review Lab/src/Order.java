@@ -37,7 +37,7 @@ class Order {
     public double calculateSubtotal() {
         double subtotal = containerPrice;
         for (Yogurt yogurt : yogurts) {
-            subtotal += yogurt.getTotalPrice(); // Multiple scoops handled correctly
+            subtotal += yogurt.getTotalPrice();
         }
         for (Toppings topping : toppings) {
             subtotal += topping.getPrice();

@@ -73,7 +73,7 @@ public class Main {
 
 
 
-    // Helper method for creating Yogurt
+
     static Yogurt createYogurt(String type) {
         switch (type.toLowerCase()) {
             case "cookies and cream": return new CookiesAndCream();
@@ -83,7 +83,6 @@ public class Main {
         }
     }
 
-    // Helper method for creating Topping
     static Toppings createTopping(String type) {
         switch (type.toLowerCase()) {
             case "sprinkles": return new Sprinkles();
@@ -94,7 +93,6 @@ public class Main {
         }
     }
 
-    // Helper method for creating Invoice
     private static Invoice createInvoice(String type) {
         switch (type.toLowerCase()) {
             case "text": return new TextInvoice();
