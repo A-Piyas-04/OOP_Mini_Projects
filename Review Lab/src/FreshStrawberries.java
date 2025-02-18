@@ -1,5 +1,5 @@
-public class FreshStrawberries extends Yogurt{
+public class FreshStrawberries extends Toppings{
     public FreshStrawberries(){
-        super("Fresh Strawberries",3.25);
+        super("Fresh Strawberries",1.00);
     }
 }

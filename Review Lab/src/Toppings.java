@@ -1,8 +1,8 @@
-abstract class Topping {
+abstract class Toppings {
     String name;
     double price;
 
-    public Topping(String name, double price) {
+    public Toppings(String name, double price) {
         this.name = name;
         this.price = price;
     }
