@@ -7,10 +7,10 @@ class TextInvoice implements Invoice {
     public void generateInvoice(Order order) throws IOException {
         String fileName = "invoices/Invoice_" + System.currentTimeMillis() + ".txt";
         try (PrintWriter writer = new PrintWriter(new FileWriter(fileName))) {
-            writer.println("===== Yogurt Shop Invoice =====\n");
+            writer.println("========) Yogurt Shop Invoice (========\n");
 
             for (Yogurt yogurt : order.yogurts)
-                writer.println(yogurt.getName() + " - 1 scoop: $" + yogurt.getPricePerScoop());
+                writer.println(yogurt.getName() + " - 1 scoop: $" + yogurt.getTotalPrice());
 
             for (Toppings topping : order.toppings)
                 writer.println(topping.getName() + " - 1 time: $" + topping.getPrice());

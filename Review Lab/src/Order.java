@@ -25,7 +25,7 @@ class Order {
 
     public double calculateSubtotal() {
         double total = containerPrice;
-        for (Yogurt yogurt : yogurts) total += yogurt.getPricePerScoop();
+        for (Yogurt yogurt : yogurts) total += yogurt.getTotalPrice();
         for (Toppings Toppings : toppings) total += Toppings.getPrice();
         return total;
     }
@@ -38,10 +38,10 @@ class Order {
     public void printOrderDetails() {
         System.out.println("Yogurt Shop Invoice");
         for (Yogurt yogurt : yogurts)
-            System.out.println(yogurt.getName() + " - 1 scoop: $" + yogurt.getPricePerScoop());
+            System.out.println(yogurt.getName() + " - 1 scoop : $" + yogurt.getTotalPrice());
 
         for (Toppings Toppings : toppings)
-            System.out.println(Toppings.getName() + " - 1 time: $" + Toppings.getPrice());
+            System.out.println(Toppings.getName() + " - 1 time : $" + Toppings.getPrice());
 
         System.out.println("Container Type: " + containerType + " - $" + containerPrice);
         System.out.println("Subtotal: $" + calculateSubtotal());

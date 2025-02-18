@@ -12,24 +12,40 @@ public class Main {
             invoiceFolder.mkdir();
         }
 
-        // Choose container
+
+
         System.out.println("Choose your container: (paper/glass)");
         String containerType = scanner.nextLine();
         Order order = new Order(containerType);
 
-        // Yogurt Flavors
+
+
+        List<Yogurt> selectedYogurts = new ArrayList<>();
         System.out.println("Enter yogurt flavors (type 'done' to finish):");
         while (true) {
+            System.out.print("Yogurt flavor: ");
             String yogurtName = scanner.nextLine();
             if (yogurtName.equalsIgnoreCase("done")) break;
+
             try {
-                order.addYogurt(createYogurt(yogurtName));
+                selectedYogurts.add(createYogurt(yogurtName));
             } catch (IllegalArgumentException e) {
                 System.out.println("Invalid yogurt type! Try again.");
             }
         }
 
-        // Toppings
+        //scoops........................
+        for (Yogurt yogurt : selectedYogurts) {
+            System.out.print("Enter number of scoops for " + yogurt.getName() + ": ");
+            int scoops = scanner.nextInt();
+            yogurt.setScoops(scoops);
+            order.addYogurt(yogurt);
+        }
+        scanner.nextLine();
+
+
+
+
         System.out.println("Enter toppings (type 'done' to finish):");
         while (true) {
             String toppingName = scanner.nextLine();
@@ -41,7 +57,9 @@ public class Main {
             }
         }
 
-        // Choose invoice type
+
+
+
         System.out.println("Choose invoice type: text/csv");
         String invoiceType = scanner.nextLine();
         Invoice invoice;
@@ -53,8 +71,10 @@ public class Main {
         }
     }
 
+
+
     // Helper method for creating Yogurt
-    private static Yogurt createYogurt(String type) {
+    static Yogurt createYogurt(String type) {
         switch (type.toLowerCase()) {
             case "cookies and cream": return new CookiesAndCream();
             case "chocolate fudge": return new ChocolateFudge();
@@ -64,7 +84,7 @@ public class Main {
     }
 
     // Helper method for creating Topping
-    private static Toppings createTopping(String type) {
+    static Toppings createTopping(String type) {
         switch (type.toLowerCase()) {
             case "sprinkles": return new Sprinkles();
             case "mixed chopped nuts": return new MixedChoppedNuts();
