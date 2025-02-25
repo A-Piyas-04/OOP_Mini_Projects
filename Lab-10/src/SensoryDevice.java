@@ -1,40 +1,11 @@
-package device;
-
-public abstract class SensoryDevice implements Device {
-    protected boolean isOn;
-    protected String location;
+public abstract class SensoryDevice extends AbstractDevice {
     protected int sensitivity;
     protected boolean notificationEnabled;
 
     public SensoryDevice() {
-        this.isOn = false;
+        super();
         this.sensitivity = 5; // Default sensitivity in the middle of 1-10 range
         this.notificationEnabled = true;
-    }
-
-    @Override
-    public void turnOn() {
-        this.isOn = true;
-    }
-
-    @Override
-    public void turnOff() {
-        this.isOn = false;
-    }
-
-    @Override
-    public boolean isOn() {
-        return isOn;
-    }
-
-    @Override
-    public String getLocation() {
-        return location;
-    }
-
-    @Override
-    public void setLocation(String location) {
-        this.location = location;
     }
 
     public void setSensitivity(int sensitivity) {

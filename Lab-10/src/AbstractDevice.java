@@ -1,13 +1,9 @@
-package device;
-
-public abstract class SecurityDevice implements Device {
+public abstract class AbstractDevice implements Device {
     protected boolean isOn;
     protected String location;
-    protected boolean notificationEnabled;
 
-    public SecurityDevice() {
+    public AbstractDevice() {
         this.isOn = false;
-        this.notificationEnabled = true;
     }
 
     @Override
@@ -34,14 +30,4 @@ public abstract class SecurityDevice implements Device {
     public void setLocation(String location) {
         this.location = location;
     }
-
-    public void setNotificationEnabled(boolean enabled) {
-        this.notificationEnabled = enabled;
-    }
-
-    public boolean isNotificationEnabled() {
-        return notificationEnabled;
-    }
-
-    protected abstract void sendNotification(String message);
 }

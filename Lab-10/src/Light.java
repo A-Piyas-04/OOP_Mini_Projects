@@ -1,5 +1,3 @@
-package device.powered;
-
 import device.PoweredDevice;
 
 public class Light extends PoweredDevice {
