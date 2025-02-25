@@ -4,7 +4,7 @@ abstract class SensoryDevice extends AbstractDevice {
 
     public SensoryDevice() {
         super();
-        this.sensitivity = 5; // Default sensitivity in the middle of 1-10 range
+        this.sensitivity = 5;
         this.notificationEnabled = true;
     }
 

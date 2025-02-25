@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 public class SmartHomeSystem {
-    private Map<String, List<Device>> devicesByLocation;
+    private Map< String, List<Device> > devicesByLocation;
     private List<Device> allDevices;
 
     public SmartHomeSystem() {

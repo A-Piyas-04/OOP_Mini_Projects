@@ -1,13 +1,13 @@
 public class AirConditioner extends PoweredDevice {
     private double temperature;
     private String fanSpeed;
-    private static final double MIN_TEMP = 5.0;
-    private static final double MAX_TEMP = 50.0;
+    private static final double MIN_TEMP =18.0;
+    private static final double MAX_TEMP = 25.0;
     private static final String[] FAN_SPEEDS = {"LOW","HIGH"};
 
     public AirConditioner() {
         super();
-        this.temperature = 22.0;
+        this.temperature = 21.0;
         this.fanSpeed = FAN_SPEEDS[0];
     }
 
@@ -47,7 +47,7 @@ public class AirConditioner extends PoweredDevice {
     }
 
     private void updatePowerConsumption() {
-        double tempDiff = Math.abs(temperature - 22.0);
+        double tempDiff = Math.abs(temperature - 21.0);
         double fanMultiplier = fanSpeed.equals("HIGH") ? 1.5 : 1.0;
         setPowerConsumption(tempDiff * (0.5) * fanMultiplier);
     }

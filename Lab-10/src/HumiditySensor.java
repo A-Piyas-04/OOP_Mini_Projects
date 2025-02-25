@@ -6,7 +6,7 @@ public class HumiditySensor extends SensoryDevice {
     public HumiditySensor() {
         super();
         this.humidityLevel = 0.0;
-        this.measurementUnit = VALID_UNITS[0]; // Default to percentage
+        this.measurementUnit = VALID_UNITS[0];
     }
 
     public void setMeasurementUnit(String unit) {
@@ -31,8 +31,7 @@ public class HumiditySensor extends SensoryDevice {
 
     @Override
     protected void processData() {
-        // In a real implementation, this would read from a humidity sensor
-        // For simulation, we'll use the sensitivity to determine notification threshold
+
         double notificationThreshold = 70.0 * (11 - sensitivity) / 10.0;
         if (humidityLevel > notificationThreshold) {
             sendNotification("High humidity level detected: " + 
@@ -41,7 +40,7 @@ public class HumiditySensor extends SensoryDevice {
         }
     }
 
-    // Simulated method to update humidity level from sensor
+
     public void updateHumidityLevel(double level) {
         this.humidityLevel = level;
         if (isOn()) {
@@ -56,7 +55,7 @@ public class HumiditySensor extends SensoryDevice {
     @Override
     protected void sendNotification(String message) {
         if (notificationEnabled) {
-            // In a real implementation, this would send the notification to the user
+
             System.out.println("HumiditySensor Notification: " + message);
         }
     }

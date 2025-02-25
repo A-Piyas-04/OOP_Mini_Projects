@@ -1,7 +1,7 @@
 public class SmokeDetector extends SensoryDevice {
-    private boolean sprinklerActive;
-    private double smokeLevel;
-    private static final double SMOKE_THRESHOLD = 0.5; // Threshold for smoke detection
+    boolean sprinklerActive;
+    double smokeLevel;
+    private static final double SMOKE_THRESHOLD = 0.5;
 
     public SmokeDetector() {
         super();
@@ -24,8 +24,6 @@ public class SmokeDetector extends SensoryDevice {
 
     @Override
     protected void processData() {
-        // In a real implementation, this would read from a smoke sensor
-        // For simulation, we'll use the sensitivity to affect the smoke detection threshold
         double adjustedThreshold = SMOKE_THRESHOLD * (11 - sensitivity) / 10.0;
         if (smokeLevel > adjustedThreshold) {
             sendNotification("Smoke detected! Level: " + String.format("%.2f", smokeLevel));
@@ -33,18 +31,10 @@ public class SmokeDetector extends SensoryDevice {
         }
     }
 
-    // Simulated method to update smoke level from sensor
-    public void updateSmokeLevel(double level) {
-        this.smokeLevel = level;
-        if (isOn()) {
-            processData();
-        }
-    }
 
     @Override
     protected void sendNotification(String message) {
         if (notificationEnabled) {
-            // In a real implementation, this would send the notification to the user
             System.out.println("SmokeDetector Notification: " + message);
         }
     }

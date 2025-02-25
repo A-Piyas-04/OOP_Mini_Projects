@@ -17,7 +17,7 @@ public class SecurityCamera extends SecurityDevice {
     }
 
     public void startLiveFeed() {
-        if (!isOn()) {
+        if (isOn()) {
             return;
         }
         this.liveFeedActive = true;
