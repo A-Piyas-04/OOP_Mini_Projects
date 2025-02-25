@@ -1,5 +1,5 @@
 abstract class PoweredDevice extends AbstractDevice {
-    protected double powerConsumption;
+    double powerConsumption;
 
     public PoweredDevice() {
         super();
