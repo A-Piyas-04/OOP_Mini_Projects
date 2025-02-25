@@ -14,5 +14,5 @@ abstract class SecurityDevice extends AbstractDevice {
         return notificationEnabled;
     }
 
-    protected abstract void sendNotification(String message);
+   abstract void sendNotification(String message);
 }

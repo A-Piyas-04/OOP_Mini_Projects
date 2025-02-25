@@ -5,7 +5,7 @@ public class SecurityAlarm extends SecurityDevice {
 
     public SecurityAlarm() {
         super();
-        this.password = "1234"; // Default password
+        this.password = "99999";
         this.failedAttempts = 0;
     }
 

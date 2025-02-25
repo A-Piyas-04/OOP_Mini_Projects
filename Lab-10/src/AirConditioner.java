@@ -1,14 +1,14 @@
 public class AirConditioner extends PoweredDevice {
     private double temperature;
     private String fanSpeed;
-    private static final double MIN_TEMP = 18.0;
-    private static final double MAX_TEMP = 25.0;
-    private static final String[] FAN_SPEEDS = {"LOW", "HIGH"};
+    private static final double MIN_TEMP = 5.0;
+    private static final double MAX_TEMP = 50.0;
+    private static final String[] FAN_SPEEDS = {"LOW","HIGH"};
 
     public AirConditioner() {
         super();
-        this.temperature = 22.0; // Default temperature
-        this.fanSpeed = FAN_SPEEDS[0]; // Default to LOW
+        this.temperature = 22.0;
+        this.fanSpeed = FAN_SPEEDS[0];
     }
 
     public void setTemperature(double temperature) {
@@ -23,6 +23,7 @@ public class AirConditioner extends PoweredDevice {
         return temperature;
     }
 
+
     public void setFanSpeed(String speed) {
         if (!isValidFanSpeed(speed)) {
             throw new IllegalArgumentException("Invalid fan speed. Must be either LOW or HIGH");
@@ -35,6 +36,7 @@ public class AirConditioner extends PoweredDevice {
         return fanSpeed;
     }
 
+
     private boolean isValidFanSpeed(String speed) {
         for (String validSpeed : FAN_SPEEDS) {
             if (validSpeed.equals(speed)) {
@@ -45,13 +47,9 @@ public class AirConditioner extends PoweredDevice {
     }
 
     private void updatePowerConsumption() {
-        // Power consumption based on temperature difference from ambient (assumed 20°C)
-        // and fan speed (HIGH consumes more power)
-        double tempDiff = Math.abs(temperature - 20.0);
+        double tempDiff = Math.abs(temperature - 22.0);
         double fanMultiplier = fanSpeed.equals("HIGH") ? 1.5 : 1.0;
-        setPowerConsumption(tempDiff * 0.5 * fanMultiplier);
+        setPowerConsumption(tempDiff * (0.5) * fanMultiplier);
     }
 
-    public void setPowerConsumption(double v) {
-    }
 }
