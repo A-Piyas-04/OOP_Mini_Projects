@@ -28,7 +28,7 @@ public class Light extends PoweredDevice {
     }
 
     private void updatePowerConsumption() {
-        setPowerConsumption(intensity * 0.1);
+        setPowerConsumption(intensity * 0.5);
     }
 
     public void setDayMode() {

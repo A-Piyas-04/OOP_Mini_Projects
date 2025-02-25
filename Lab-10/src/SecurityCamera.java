@@ -30,7 +30,6 @@ public class SecurityCamera extends SecurityDevice {
         }
         this.liveFeedActive = false;
         if (autoSave) {
-            // In a real implementation, this would save the feed recording
             sendNotification("Live feed stopped and saved");
         } else {
             sendNotification("Live feed stopped");
@@ -52,7 +51,6 @@ public class SecurityCamera extends SecurityDevice {
     @Override
     protected void sendNotification(String message) {
         if (notificationEnabled) {
-            // In a real implementation, this would send the notification to the user
             System.out.println("SecurityCamera Notification: " + message);
         }
     }

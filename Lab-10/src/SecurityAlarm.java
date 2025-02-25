@@ -32,7 +32,6 @@ public class SecurityAlarm extends SecurityDevice {
     @Override
     protected void sendNotification(String message) {
         if (notificationEnabled) {
-            // In a real implementation, this would send the notification to the user
             System.out.println("SecurityAlarm Notification: " + message);
         }
     }
