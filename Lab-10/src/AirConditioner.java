@@ -1,7 +1,3 @@
-package device.powered;
-
-import device.PoweredDevice;
-
 public class AirConditioner extends PoweredDevice {
     private double temperature;
     private String fanSpeed;
@@ -54,5 +50,8 @@ public class AirConditioner extends PoweredDevice {
         double tempDiff = Math.abs(temperature - 20.0);
         double fanMultiplier = fanSpeed.equals("HIGH") ? 1.5 : 1.0;
         setPowerConsumption(tempDiff * 0.5 * fanMultiplier);
+    }
+
+    public void setPowerConsumption(double v) {
     }
 }

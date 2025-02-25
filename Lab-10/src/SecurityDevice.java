@@ -1,4 +1,4 @@
-public abstract class SecurityDevice extends AbstractDevice {
+abstract class SecurityDevice extends AbstractDevice {
     protected boolean notificationEnabled;
 
     public SecurityDevice() {

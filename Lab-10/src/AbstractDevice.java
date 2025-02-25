@@ -1,4 +1,4 @@
-public abstract class AbstractDevice implements Device {
+public abstract class AbstractDevice implements Device{
     protected boolean isOn;
     protected String location;
 

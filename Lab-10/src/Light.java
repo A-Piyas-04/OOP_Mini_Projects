@@ -1,5 +1,3 @@
-import device.PoweredDevice;
-
 public class Light extends PoweredDevice {
     private int intensity;
     private String color;
@@ -32,7 +30,6 @@ public class Light extends PoweredDevice {
     }
 
     private void updatePowerConsumption() {
-        // Simple power consumption calculation based on intensity
         setPowerConsumption(intensity * 0.1);
     }
 

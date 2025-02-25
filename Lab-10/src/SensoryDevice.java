@@ -1,4 +1,4 @@
-public abstract class SensoryDevice extends AbstractDevice {
+abstract class SensoryDevice extends AbstractDevice {
     protected int sensitivity;
     protected boolean notificationEnabled;
 

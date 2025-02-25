@@ -1,5 +1,3 @@
-import device.SensoryDevice;
-
 public class SmokeDetector extends SensoryDevice {
     private boolean sprinklerActive;
     private double smokeLevel;

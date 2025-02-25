@@ -1,7 +1,3 @@
-package device.security;
-
-import device.SecurityDevice;
-
 public class SecurityAlarm extends SecurityDevice {
     private String password;
     private int failedAttempts;

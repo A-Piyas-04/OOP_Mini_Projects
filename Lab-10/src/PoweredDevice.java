@@ -1,4 +1,4 @@
-public abstract class PoweredDevice extends AbstractDevice {
+abstract class PoweredDevice extends AbstractDevice {
     protected double powerConsumption;
 
     public PoweredDevice() {

@@ -1,7 +1,3 @@
-package device.security;
-
-import device.SecurityDevice;
-
 public class SecurityCamera extends SecurityDevice {
     private boolean autoSave;
     private boolean liveFeedActive;

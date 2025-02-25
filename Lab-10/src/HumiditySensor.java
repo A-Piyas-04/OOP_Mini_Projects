@@ -1,7 +1,3 @@
-package device.sensory;
-
-import device.SensoryDevice;
-
 public class HumiditySensor extends SensoryDevice {
     private double humidityLevel;
     private String measurementUnit;
