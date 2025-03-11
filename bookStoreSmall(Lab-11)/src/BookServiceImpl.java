@@ -11,34 +11,72 @@ import javax.mail.*;
 import javax.mail.internet.*;
 
 public class BookServiceImpl implements BookService {
+    private final BookQueryBuilder queryBuilder;
 
-    static final String getAllBooksQuery = "SELECT * FROM " + BooksDBConstants.TABLE_BOOK;
-    static final String getBookByIdQuery = "SELECT * FROM " + BooksDBConstants.TABLE_BOOK
-            + " WHERE " + BooksDBConstants.COLUMN_BARCODE + " = ?";
+    public BookServiceImpl() {
+        this.queryBuilder = new DefaultBookQueryBuilder();
+    }
 
-    static final String deleteBookByIdQuery = "DELETE FROM " + BooksDBConstants.TABLE_BOOK + "  WHERE "
-            + BooksDBConstants.COLUMN_BARCODE + "=?";
+    public BookServiceImpl(BookQueryBuilder queryBuilder) {
+        this.queryBuilder = queryBuilder;
+    }
 
-    static final String addBookQuery = "INSERT INTO " + BooksDBConstants.TABLE_BOOK + "  VALUES(?,?,?,?,?)";
+    interface BookQueryBuilder {
+        String buildGetAllBooksQuery();
+        String buildGetBookByIdQuery();
+        String buildDeleteBookByIdQuery();
+        String buildAddBookQuery();
+        String buildUpdateBookQtyByIdQuery();
+        String buildUpdateBookByIdQuery();
+    }
 
-    static final String updateBookQtyByIdQuery = "UPDATE " + BooksDBConstants.TABLE_BOOK + " SET "
-            + BooksDBConstants.COLUMN_QUANTITY + "=? WHERE " + BooksDBConstants.COLUMN_BARCODE
-            + "=?";
+    class DefaultBookQueryBuilder implements BookQueryBuilder {
+        @Override
+        public String buildGetAllBooksQuery() {
+            return "SELECT * FROM " + BooksDBConstants.TABLE_BOOK;
+        }
 
-    static final String updateBookByIdQuery = "UPDATE " + BooksDBConstants.TABLE_BOOK + " SET "
-            + BooksDBConstants.COLUMN_NAME + "=? , "
-            + BooksDBConstants.COLUMN_AUTHOR + "=?, "
-            + BooksDBConstants.COLUMN_PRICE + "=?, "
-            + BooksDBConstants.COLUMN_QUANTITY + "=? "
-            + "  WHERE " + BooksDBConstants.COLUMN_BARCODE
-            + "=?";
+        @Override
+        public String buildGetBookByIdQuery() {
+            return "SELECT * FROM " + BooksDBConstants.TABLE_BOOK +
+                   " WHERE " + BooksDBConstants.COLUMN_BARCODE + " = ?";
+        }
+
+        @Override
+        public String buildDeleteBookByIdQuery() {
+            return "DELETE FROM " + BooksDBConstants.TABLE_BOOK + " WHERE " +
+                   BooksDBConstants.COLUMN_BARCODE + "=?";
+        }
+
+        @Override
+        public String buildAddBookQuery() {
+            return "INSERT INTO " + BooksDBConstants.TABLE_BOOK + " VALUES(?,?,?,?,?)";
+        }
+
+        @Override
+        public String buildUpdateBookQtyByIdQuery() {
+            return "UPDATE " + BooksDBConstants.TABLE_BOOK + " SET " +
+                   BooksDBConstants.COLUMN_QUANTITY + "=? WHERE " +
+                   BooksDBConstants.COLUMN_BARCODE + "=?";
+        }
+
+        @Override
+        public String buildUpdateBookByIdQuery() {
+            return "UPDATE " + BooksDBConstants.TABLE_BOOK + " SET " +
+                   BooksDBConstants.COLUMN_NAME + "=? , " +
+                   BooksDBConstants.COLUMN_AUTHOR + "=?, " +
+                   BooksDBConstants.COLUMN_PRICE + "=?, " +
+                   BooksDBConstants.COLUMN_QUANTITY + "=? " +
+                   "WHERE " + BooksDBConstants.COLUMN_BARCODE + "=?";
+        }
+    }
 
     @Override
     public Book getBookById(String bookId) {
         Book book = null;
         Connection con = DBUtil.getConnection();
         try {
-            PreparedStatement ps = con.prepareStatement(getBookByIdQuery);
+            PreparedStatement ps = con.prepareStatement(queryBuilder.buildGetBookByIdQuery());
             ps.setString(1, bookId);
             ResultSet rs = ps.executeQuery();
 
@@ -52,7 +90,7 @@ public class BookServiceImpl implements BookService {
                 book = new Book(bCode, bName, bAuthor, bPrice, bQty);
             }
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
         return book;
     }
@@ -63,7 +101,7 @@ public class BookServiceImpl implements BookService {
         Connection con = DBUtil.getConnection();
 
         try {
-            PreparedStatement ps = con.prepareStatement(getAllBooksQuery);
+            PreparedStatement ps = con.prepareStatement(queryBuilder.buildGetAllBooksQuery());
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -77,7 +115,7 @@ public class BookServiceImpl implements BookService {
                 books.add(book);
             }
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
         return books;
     }
@@ -87,7 +125,7 @@ public class BookServiceImpl implements BookService {
         String response = ResponseCode.FAILURE.name();
         Connection con = DBUtil.getConnection();
         try {
-            PreparedStatement ps = con.prepareStatement(deleteBookByIdQuery);
+            PreparedStatement ps = con.prepareStatement(queryBuilder.buildDeleteBookByIdQuery());
             ps.setString(1, bookId);
             int k = ps.executeUpdate();
             if (k == 1) {
@@ -105,7 +143,7 @@ public class BookServiceImpl implements BookService {
         String responseCode = ResponseCode.FAILURE.name();
         Connection con = DBUtil.getConnection();
         try {
-            PreparedStatement ps = con.prepareStatement(addBookQuery);
+            PreparedStatement ps = con.prepareStatement(queryBuilder.buildAddBookQuery());
             ps.setString(1, book.getBarcode());
             ps.setString(2, book.getName());
             ps.setString(3, book.getAuthor());
@@ -127,7 +165,7 @@ public class BookServiceImpl implements BookService {
         String responseCode = ResponseCode.FAILURE.name();
         Connection con = DBUtil.getConnection();
         try {
-            PreparedStatement ps = con.prepareStatement(updateBookQtyByIdQuery);
+            PreparedStatement ps = con.prepareStatement(queryBuilder.buildUpdateBookQtyByIdQuery());
             ps.setInt(1, quantity);
             ps.setString(2, bookId);
             ps.executeUpdate();
@@ -144,10 +182,10 @@ public class BookServiceImpl implements BookService {
         List<Book> books = new ArrayList<Book>();
         Connection con = DBUtil.getConnection();
         try {
-            String getBooksByCommaSeperatedBookIdsQuery = "SELECT * FROM " + BooksDBConstants.TABLE_BOOK
-                    + " WHERE " +
-                    BooksDBConstants.COLUMN_BARCODE + " IN ( " + commaSeperatedBookIds + " )";
-            PreparedStatement ps = con.prepareStatement(getBooksByCommaSeperatedBookIdsQuery);
+            String query = "SELECT * FROM " + BooksDBConstants.TABLE_BOOK +
+                          " WHERE " + BooksDBConstants.COLUMN_BARCODE + 
+                          " IN (" + commaSeperatedBookIds + ")";
+            PreparedStatement ps = con.prepareStatement(query);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -161,7 +199,7 @@ public class BookServiceImpl implements BookService {
                 books.add(book);
             }
         } catch (SQLException e) {
-
+            e.printStackTrace();
         }
         return books;
     }
@@ -171,7 +209,7 @@ public class BookServiceImpl implements BookService {
         String responseCode = ResponseCode.FAILURE.name();
         Connection con = DBUtil.getConnection();
         try {
-            PreparedStatement ps = con.prepareStatement(updateBookByIdQuery);
+            PreparedStatement ps = con.prepareStatement(queryBuilder.buildUpdateBookByIdQuery());
             ps.setString(1, book.getName());
             ps.setString(2, book.getAuthor());
             ps.setDouble(3, book.getPrice());
