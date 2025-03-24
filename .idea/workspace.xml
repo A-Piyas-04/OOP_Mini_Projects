@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff8e25f6-9b25-40c1-aa5d-f61642f7fe81" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/Book.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/Book.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/BookService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/BookService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/BookServiceImpl$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/BookServiceImpl$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/BookServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/BookServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/BooksDBConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/BooksDBConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/Cart.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/Cart.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/DBConnection.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/DBConnection.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/DBUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/DBUtil.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/DatabaseConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/DatabaseConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/ResponseCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/ResponseCode.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UserBookBuyHistory.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UserBookBuyHistory.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UserRole.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UserRole.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UserService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UserServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UserServiceImpl.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UsersDBConstants.class" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/bin/UsersDBConstants.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/src/BookServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/src/BookServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/src/Cart.java" beforeDir="false" afterPath="$PROJECT_DIR$/bookStoreSmall(Lab-11)/src/Cart.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TetrisBlocks_Lab 12/src/Block.java" beforeDir="false" afterPath="$PROJECT_DIR$/TetrisBlocks_Lab 12/src/Block.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
