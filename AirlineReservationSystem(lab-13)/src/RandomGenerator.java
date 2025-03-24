@@ -92,4 +92,9 @@ public class RandomGenerator {
     public String getRandomNumber() {
         return randomNum;
     }
+
+    public int nextInt(int bound) {
+        Random rand = new Random();
+        return rand.nextInt(bound);
+    }
 }

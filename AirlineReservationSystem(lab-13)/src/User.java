@@ -30,7 +30,7 @@ public class User {
         Flight f1 = new Flight();
         FlightReservation bookingAndReserving = new FlightReservation();
         Customer c1 = new Customer();
-        f1.flightScheduler();
+        f1.initializeFlightSchedule();
         Scanner read = new Scanner(System.in);
 
        
