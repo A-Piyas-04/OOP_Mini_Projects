@@ -1,18 +1,29 @@
-## Getting Started
+### Refactoring
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+The following refactoring improvements were made :
 
-## Folder Structure
+1.**Extract Method** :
+- Extracted the flight scheduling logic from the Flight class to a new FlightScheduler class
 
-The workspace contains two folders by default, where:
+2. **Encapsulate Collections** in Flight Class :
+- Encapsulate customer list access and improve datetime handling'
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
+- Replace direct access to listOfRegisteredCustomersInAFlight with proper getter, adder, and remover methods to ensure encapsulation. Modify datetime truncation to use withSecond(0).withNano(0) instead of truncatedTo(ChronoUnit.MINUTES) for clarity.
 
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
+3. **Removal of Magic Literal** :
+- Replaced hardcoded values with named constants to improve code readability and maintainability.
 
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+4. **Decompose Conditional** in User Class :
+- Extract login and menu handling logic into separate methods.
 
-## Dependency Management
+- The main method in the User class was becoming too lengthy and complex. To improve readability and maintainability, the login and menu handling logic for both admin and passenger roles has been extracted into separate methods: `handleAdminLogin`, `handlePassengerLogin`, `handleAdminMenu`, `handlePassengerMenu`, `handleAdminMenuChoice`, and `handlePassengerMenuChoice`.
 
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+5. **Move flight-search Method** from Customer to Flight :
+- Relocate the `findFlightByNumber` method from the `Customer` class to the `Flight` class to improve code organization and maintainability.
+
+6. **Introduce Parameter Object** :
+- Created FlightDetails class
+- Modified constructor of Flight class so that it uses FlightDetails object.
+
+7. **Rename Methods** in RolesAndPermissions :
+- Rename 'isPrivilegedUserOrNot' to 'validateAdminCredentials' and 'isPassengerRegistered' to 'validatePassengerCredentials'.
