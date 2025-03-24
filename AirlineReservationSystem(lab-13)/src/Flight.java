@@ -338,4 +338,15 @@ public class Flight extends FlightDistance {
         return toWhichCity;
     }
 
+
+
+// Move flight-related search methods from Customer to Flight
+public static Flight findFlightByNumber(String flightNumber) {
+    for (Flight flight : flightList) {
+        if (flight.getFlightNumber().equals(flightNumber)) {
+            return flight;
+        }
+    }
+    return null;
+}
 }
