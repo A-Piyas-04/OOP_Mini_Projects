@@ -36,7 +36,7 @@ public class FlightReservation implements DisplayClass {
                     if (userID.equals(customer.getUserID())) {
                         isFound = true;
                         f1.setNoOfSeatsInTheFlight(f1.getNoOfSeats() - numOfTickets);
-                        if (!f1.isCustomerAlreadyAdded(f1.getListOfRegisteredCustomersInAFlight(), customer)) {
+                        if (!f1.isCustomerAlreadyAdded(f1.getRegisteredCustomers(), customer)) {
                             f1.addNewCustomerToFlight(customer);
                         }
                         if (isFlightAlreadyAddedToCustomerList(customer.flightsRegisteredByUser, f1)) {
@@ -187,7 +187,7 @@ public class FlightReservation implements DisplayClass {
         System.out.printf("%10s+------------+------------+----------------------------------+---------+-----------------------------+-------------------------------------+-------------------------+----------------+\n", "");
         System.out.printf("%10s| SerialNum  |   UserID   | Passenger Names                  | Age     | EmailID\t\t       | Home Address\t\t\t     | Phone Number\t       | Booked Tickets |%n", "");
         System.out.printf("%10s+------------+------------+----------------------------------+---------+-----------------------------+-------------------------------------+-------------------------+----------------+\n", "");
-        int size = flight.getListOfRegisteredCustomersInAFlight().size();
+        int size = flight.getRegisteredCustomers().size();
         for (int i = 0; i < size; i++) {
             System.out.println(toString(i, c.get(i), flightIndex(c.get(i).flightsRegisteredByUser, flight)));
             System.out.printf("%10s+------------+------------+----------------------------------+---------+-----------------------------+-------------------------------------+-------------------------+----------------+\n", "");
@@ -198,8 +198,8 @@ public class FlightReservation implements DisplayClass {
     public void displayRegisteredUsersForAllFlight() {
         System.out.println();
         for (Flight flight : flight.getFlightList()) {
-            List<Customer> c = flight.getListOfRegisteredCustomersInAFlight();
-            int size = flight.getListOfRegisteredCustomersInAFlight().size();
+            List<Customer> c = flight.getRegisteredCustomers();
+            int size = flight.getRegisteredCustomers().size();
             if (size != 0) {
                 displayHeaderForUsers(flight, c);
             }
@@ -220,7 +220,7 @@ public class FlightReservation implements DisplayClass {
     public void displayRegisteredUsersForASpecificFlight(String flightNum) {
         System.out.println();
         for (Flight flight : flight.getFlightList()) {
-            List<Customer> c = flight.getListOfRegisteredCustomersInAFlight();
+            List<Customer> c = flight.getRegisteredCustomers();
             if (flight.getFlightNumber().equalsIgnoreCase(flightNum)) {
                 displayHeaderForUsers(flight, c);
             }

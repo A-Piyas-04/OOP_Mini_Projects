@@ -2,7 +2,6 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.ChronoUnit;
 import java.util.*;
 
 public class Flight extends FlightDistance {
@@ -18,7 +17,6 @@ public class Flight extends FlightDistance {
     private double distanceInKm;
     private String flightTime;
     private int numOfSeatsInTheFlight;
-    private List<Customer> listOfRegisteredCustomersInAFlight;
     private int customerIndex;
     private static int nextFlightDay = 0;
     private static final List<Flight> flightList = new ArrayList<>();
@@ -267,7 +265,7 @@ public class Flight extends FlightDistance {
         } else {
             newDatetime = datetime.plusMinutes(15 - mod);
         }
-        newDatetime = newDatetime.truncatedTo(ChronoUnit.MINUTES);
+        newDatetime = newDatetime.withSecond(0).withNano(0);
         return newDatetime;
     }
 
@@ -294,8 +292,34 @@ public class Flight extends FlightDistance {
         return flightList;
     }
 
-    public List<Customer> getListOfRegisteredCustomersInAFlight() {
-        return listOfRegisteredCustomersInAFlight;
+    // Replace direct access to listOfRegisteredCustomersInAFlight with proper methods
+    private List<Customer> listOfRegisteredCustomersInAFlight;
+    
+    public List<Customer> getRegisteredCustomers() {
+        return new ArrayList<>(listOfRegisteredCustomersInAFlight); // Return a copy to prevent modification
+    }
+    
+    public void addCustomer(Customer customer) {
+        if (!listOfRegisteredCustomersInAFlight.contains(customer)) {
+            listOfRegisteredCustomersInAFlight.add(customer);
+        }
+    }
+    
+    public void removeCustomer(Customer customer) {
+        listOfRegisteredCustomersInAFlight.remove(customer);
+    }
+    
+    // Similar methods for flightList
+    public static List<Flight> getAllFlights() {
+        return new ArrayList<>(flightList); // Return a copy to prevent modification
+    }
+    
+    public static void addFlight(Flight flight) {
+        flightList.add(flight);
+    }
+    
+    public static void removeFlight(Flight flight) {
+        flightList.remove(flight);
     }
 
     public String getFlightSchedule() {
