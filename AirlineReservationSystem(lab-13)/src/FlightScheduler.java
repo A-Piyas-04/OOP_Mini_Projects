@@ -23,9 +23,11 @@ public class FlightScheduler {
             String flightSchedule = createNewFlightsAndTime();
             String flightNumber = randomGenerator.randomFlightNumbGen(2, 1).toUpperCase();
             int numOfSeatsInTheFlight = randomGenerator.randomNumOfSeats();
-            String gate = randomGenerator.randomFlightNumbGen(1, 30);
-            flightList.add(new Flight(flightSchedule, flightNumber, numOfSeatsInTheFlight, 
-                chosenDestinations, distanceBetweenTheCities, gate.toUpperCase()));
+            String gate = randomGenerator.randomFlightNumbGen(1, 30).toUpperCase();
+            
+            FlightDetails details = new FlightDetails(flightSchedule, flightNumber, numOfSeatsInTheFlight,
+                chosenDestinations, distanceBetweenTheCities, gate);
+            flightList.add(new Flight(details));
         }
     }
     
