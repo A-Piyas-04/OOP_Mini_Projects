@@ -42,17 +42,23 @@ public class Flight extends FlightDistance {
      * @param distanceBetweenTheCities gives the distance between the airports both in miles and kilometers
      * @param gate                     from where passengers will board to the aircraft
      */
-    Flight(String flightSchedule, String flightNumber, int numOfSeatsInTheFlight, String[][] chosenDestinations, String[] distanceBetweenTheCities, String gate) {
-        this.flightSchedule = flightSchedule;
-        this.flightNumber = flightNumber;
-        this.numOfSeatsInTheFlight = numOfSeatsInTheFlight;
-        this.fromWhichCity = chosenDestinations[0][0];
-        this.toWhichCity = chosenDestinations[1][0];
-        this.distanceInMiles = Double.parseDouble(distanceBetweenTheCities[0]);
-        this.distanceInKm = Double.parseDouble(distanceBetweenTheCities[1]);
-        this.flightTime = calculateFlightTime(distanceInMiles);
+    Flight(FlightDetails details) {
+        this.flightSchedule = details.getFlightSchedule();
+        this.flightNumber = details.getFlightNumber();
+        this.numOfSeatsInTheFlight = details.getSeats();
+        this.fromWhichCity = details.getFromCity();
+        this.toWhichCity = details.getToCity();
+        this.gate = details.getGate();
+        
+        // Set distance information
+        String[] distanceInfo = details.getDistanceInfo();
+        this.distanceInMiles = Double.parseDouble(distanceInfo[0]);
+        this.distanceInKm = Double.parseDouble(distanceInfo[1]);
+        
+        // Initialize other fields
         this.listOfRegisteredCustomersInAFlight = new ArrayList<>();
-        this.gate = gate;
+        this.customerIndex = 0;
+        this.flightTime = calculateFlightTime(distanceInMiles);
     }
 
     /**
