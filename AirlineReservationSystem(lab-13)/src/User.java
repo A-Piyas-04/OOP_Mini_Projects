@@ -46,7 +46,7 @@ public class User {
         String password = read.nextLine();
         System.out.println();
 
-        int adminStatus = r1.isPrivilegedUserOrNot(username, password);
+        int adminStatus = r1.validateAdminCredentials(username, password);
         if (adminStatus == -1) {
             System.out.printf("\n%20sERROR!!! Unable to login Cannot find user with the entered credentials.... Try Creating New Credentials or get yourself register by pressing 4...\n", "");
         } else if (adminStatus == 0) {
@@ -62,7 +62,7 @@ public class User {
         String email = read.nextLine();
         System.out.print("Enter the Password : \t");
         String password = read.nextLine();
-        String[] result = r1.isPassengerRegistered(email, password).split("-");
+        String[] result = r1.validatePassengerCredentials(email, password).split("-");
 
         if (Integer.parseInt(result[0]) == 1) {
             handlePassengerMenu(email, result[1], read, c1, f1, bookingAndReserving);
@@ -268,7 +268,7 @@ public class User {
                 String username = read1.nextLine();
                 System.out.print("Enter the Password to Register :     ");
                 String password = read1.nextLine();
-                while (r1.isPrivilegedUserOrNot(username, password) != -1) {
+                while (r1.validateAdminCredentials(username, password) != -1) {
                     System.out.print("ERROR!!! Admin with same UserName already exist. Enter new UserName:   ");
                     username = read1.nextLine();
                     System.out.print("Enter the Password Again:   ");
