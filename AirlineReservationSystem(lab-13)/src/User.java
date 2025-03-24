@@ -44,7 +44,7 @@ public class User {
         Flight f1 = new Flight();
         FlightReservation bookingAndReserving = new FlightReservation();
         Customer c1 = new Customer();
-        f1.initializeFlightSchedule();
+        Flight.initializeFlightSchedule();
         Scanner read = new Scanner(System.in);
 
        
