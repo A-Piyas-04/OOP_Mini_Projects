@@ -1,5 +1,13 @@
 # Parking Lot System
 
+
+### System Design
+Below is the class diagram showing the core components of the parking lot system:
+
+![Class Diagram](docs/class_diagram.svg)
+
+
+
 ## 1. System Requirements
 
 ### 1.1 Parking Lot Initialization
@@ -28,17 +36,6 @@ The system should answer the following queries:
 
 ### 1.5 Input Modes
 The system should support an interactive command prompt.
-
-### 1.6 System Design
-Below is the class diagram showing the core components of the parking lot system:
-
-![Class Diagram](docs/class_diagram.svg)
-
-The diagram illustrates the relationships between:
-- ParkingService interface: Handles core parking operations
-- ParkingQueryService interface: Manages query operations
-- Vehicle class: Represents a car with registration number and color
-- Slot class: Manages individual parking slots
 
 ## 2. Commands to Support
 

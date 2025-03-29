@@ -1,52 +1,98 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+<svg width="1100" height="1100" xmlns="http://www.w3.org/2000/svg" style="background-color: white;">
   <!-- Interfaces -->
-  <g transform="translate(50,50)">
-    <rect x="0" y="0" width="200" height="100" fill="none" stroke="black"/>
-    <text x="100" y="25" text-anchor="middle" font-weight="bold">«interface»</text>
-    <text x="100" y="45" text-anchor="middle" font-weight="bold">ParkingService</text>
-    <line x1="0" y1="55" x2="200" y2="55" stroke="black"/>
-    <text x="10" y="75">+ parkVehicle(vehicle: Vehicle): int</text>
-    <text x="10" y="90">+ removeVehicle(slotNumber: int): bool</text>
+  <g transform="translate(100,50)">
+    <rect x="0" y="0" width="250" height="140" fill="none" stroke="black"/>
+    <text x="125" y="25" text-anchor="middle" font-weight="bold" font-size="14">«interface»</text>
+    <text x="125" y="45" text-anchor="middle" font-weight="bold" font-size="16">ParkingService</text>
+    <line x1="0" y1="55" x2="250" y2="55" stroke="black"/>
+    <text x="5" y="80" style="letter-spacing: 0.5px" textLength="240">+ parkVehicle(vehicle: Vehicle): int</text>
+    <text x="5" y="100" style="letter-spacing: 0.5px" textLength="240">+ removeVehicle(slotNumber: int): bool</text>
+    <text x="5" y="120" style="letter-spacing: 0.5px" textLength="240">+ getSlot(slotNumber: int): Slot</text>
   </g>
 
-  <g transform="translate(550,50)">
-    <rect x="0" y="0" width="200" height="100" fill="none" stroke="black"/>
-    <text x="100" y="25" text-anchor="middle" font-weight="bold">«interface»</text>
-    <text x="100" y="45" text-anchor="middle" font-weight="bold">ParkingQueryService</text>
-    <line x1="0" y1="55" x2="200" y2="55" stroke="black"/>
-    <text x="10" y="75">+ getStatus(): String</text>
-    <text x="10" y="90">+ getSlotNumbersByColor(color: String)</text>
+  <g transform="translate(600,50)">
+    <rect x="0" y="0" width="250" height="140" fill="none" stroke="black"/>
+    <text x="125" y="25" text-anchor="middle" font-weight="bold" font-size="14">«interface»</text>
+    <text x="125" y="45" text-anchor="middle" font-weight="bold" font-size="16">ParkingQueryService</text>
+    <line x1="0" y1="55" x2="250" y2="55" stroke="black"/>
+    <text x="5" y="80" style="letter-spacing: 0.5px" textLength="240">+ getStatus(): String</text>
+    <text x="5" y="100" style="letter-spacing: 0.5px" textLength="240">+ getSlotNumbersByColor(color: String)</text>
+    <text x="5" y="120" style="letter-spacing: 0.5px" textLength="240">+ getRegistrationNumbersByColor(color)</text>
   </g>
 
-  <!-- Classes -->
-  <g transform="translate(50,250)">
-    <rect x="0" y="0" width="200" height="120" fill="none" stroke="black"/>
-    <text x="100" y="25" text-anchor="middle" font-weight="bold">Vehicle</text>
-    <line x1="0" y1="35" x2="200" y2="35" stroke="black"/>
-    <text x="10" y="55">- registrationNumber: String</text>
-    <text x="10" y="70">- color: String</text>
-    <line x1="0" y1="80" x2="200" y2="80" stroke="black"/>
-    <text x="10" y="100">+ getRegistrationNumber(): String</text>
-    <text x="10" y="115">+ getColor(): String</text>
+  <!-- Implementation Classes -->
+  <g transform="translate(100,300)">
+    <rect x="0" y="0" width="250" height="180" fill="none" stroke="black"/>
+    <text x="125" y="25" text-anchor="middle" font-weight="bold" font-size="16">ParkingLotService</text>
+    <line x1="0" y1="35" x2="250" y2="35" stroke="black"/>
+    <text x="10" y="60" style="letter-spacing: 0.5px">- slots: List&lt;Slot&gt;</text>
+    <line x1="0" y1="70" x2="250" y2="70" stroke="black"/>
+    <text x="5" y="95" style="letter-spacing: 0.5px" textLength="240">+ parkVehicle(vehicle: Vehicle): int</text>
+    <text x="5" y="115" style="letter-spacing: 0.5px" textLength="240">+ removeVehicle(slotNumber: int): bool</text>
+    <text x="5" y="135" style="letter-spacing: 0.5px" textLength="240">+ getAvailableSlots(): int</text>
   </g>
 
-  <g transform="translate(550,250)">
-    <rect x="0" y="0" width="200" height="140" fill="none" stroke="black"/>
-    <text x="100" y="25" text-anchor="middle" font-weight="bold">Slot</text>
-    <line x1="0" y1="35" x2="200" y2="35" stroke="black"/>
-    <text x="10" y="55">- slotNumber: int</text>
-    <text x="10" y="70">- isAvailable: boolean</text>
-    <text x="10" y="85">- registrationNumber: String</text>
-    <text x="10" y="100">- color: String</text>
-    <line x1="0" y1="110" x2="200" y2="110" stroke="black"/>
-    <text x="10" y="130">+ parkCar(reg: String, color: String)</text>
+  <g transform="translate(600,300)">
+    <rect x="0" y="0" width="250" height="180" fill="none" stroke="black"/>
+    <text x="125" y="25" text-anchor="middle" font-weight="bold" font-size="16">ParkingLotQueryService</text>
+    <line x1="0" y1="35" x2="250" y2="35" stroke="black"/>
+    <text x="10" y="60" style="letter-spacing: 0.5px">- parkingLot: ParkingLot</text>
+    <line x1="0" y1="70" x2="250" y2="70" stroke="black"/>
+    <text x="5" y="95" style="letter-spacing: 0.5px" textLength="240">+ getStatus(): String</text>
+    <text x="5" y="115" style="letter-spacing: 0.5px" textLength="240">+ getSlotNumbersByColor(color: String)</text>
+    <text x="5" y="135" style="letter-spacing: 0.5px" textLength="240">+ getRegistrationNumbersByColor(color)</text>
+  </g>
+
+  <g transform="translate(350,550)">
+    <rect x="0" y="0" width="250" height="180" fill="none" stroke="black"/>
+    <text x="125" y="25" text-anchor="middle" font-weight="bold" font-size="16">ParkingLot</text>
+    <line x1="0" y1="35" x2="250" y2="35" stroke="black"/>
+    <text x="10" y="60" style="letter-spacing: 0.5px">- slots: List&lt;Slot&gt;</text>
+    <text x="10" y="80" style="letter-spacing: 0.5px">- capacity: int</text>
+    <text x="10" y="100" style="letter-spacing: 0.5px">- vehicles: List&lt;Vehicle&gt;</text>
+    <line x1="0" y1="110" x2="250" y2="110" stroke="black"/>
+    <text x="5" y="135" style="letter-spacing: 0.5px" textLength="240">+ parkCar(reg: String, color: String)</text>
+    <text x="5" y="155" style="letter-spacing: 0.5px" textLength="240">+ leaveSlot(slotNumber: int): bool</text>
+  </g>
+
+  <!-- Domain Classes -->
+  <g transform="translate(100,750)">
+    <rect x="0" y="0" width="250" height="170" fill="none" stroke="black"/>
+    <text x="125" y="25" text-anchor="middle" font-weight="bold" font-size="16">Vehicle</text>
+    <line x1="0" y1="35" x2="250" y2="35" stroke="black"/>
+    <text x="10" y="60" style="letter-spacing: 0.5px">- registrationNumber: String</text>
+    <text x="10" y="80" style="letter-spacing: 0.5px">- color: String</text>
+    <line x1="0" y1="110" x2="250" y2="110" stroke="black"/>
+    <text x="5" y="130" style="letter-spacing: 0.5px" textLength="240">+ getRegistrationNumber(): String</text>
+    <text x="5" y="160" style="letter-spacing: 0.5px" textLength="240">+ getColor(): String</text>
+  </g>
+
+  <g transform="translate(600,750)">
+    <rect x="0" y="0" width="250" height="180" fill="none" stroke="black"/>
+    <text x="125" y="25" text-anchor="middle" font-weight="bold" font-size="16">Slot</text>
+    <line x1="0" y1="35" x2="250" y2="35" stroke="black"/>
+    <text x="10" y="60" style="letter-spacing: 0.5px">- slotNumber: int</text>
+    <text x="10" y="80" style="letter-spacing: 0.5px">- isAvailable: boolean</text>
+    <text x="10" y="100" style="letter-spacing: 0.5px">- vehicle: Vehicle</text>
+    <line x1="0" y1="110" x2="250" y2="110" stroke="black"/>
+    <text x="5" y="130" style="letter-spacing: 0.5px" textLength="240">+ parkCar(reg: String, color: String)</text>
+    <text x="5" y="150" style="letter-spacing: 0.5px" textLength="240">+ leaveSlot(): void</text>
   </g>
 
   <!-- Relationships -->
-  <line x1="150" y1="150" x2="150" y2="250" stroke="black" marker-end="url(#arrow)"/>
-  <line x1="650" y1="150" x2="650" y2="250" stroke="black" marker-end="url(#arrow)"/>
-  <line x1="250" y1="100" x2="550" y2="100" stroke="black" stroke-dasharray="5,5"/>
+  <!-- Implementation arrows -->
+  <line x1="225" y1="190" x2="225" y2="300" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="725" y1="190" x2="725" y2="300" stroke="black" marker-end="url(#arrow)"/>
+  
+  <!-- Dependencies -->
+  <line x1="350" y1="110" x2="600" y2="110" stroke="black" stroke-dasharray="5,5"/>
+  
+  <!-- Association arrows -->
+  <line x1="225" y1="480" x2="350" y2="550" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="725" y1="480" x2="600" y2="550" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="475" y1="730" x2="600" y2="750" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="475" y1="730" x2="225" y2="750" stroke="black" marker-end="url(#arrow)"/>
 
   <!-- Arrow Marker -->
   <defs>
