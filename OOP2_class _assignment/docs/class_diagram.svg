@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Interfaces -->
+  <g transform="translate(50,50)">
+    <rect x="0" y="0" width="200" height="100" fill="none" stroke="black"/>
+    <text x="100" y="25" text-anchor="middle" font-weight="bold">«interface»</text>
+    <text x="100" y="45" text-anchor="middle" font-weight="bold">ParkingService</text>
+    <line x1="0" y1="55" x2="200" y2="55" stroke="black"/>
+    <text x="10" y="75">+ parkVehicle(vehicle: Vehicle): int</text>
+    <text x="10" y="90">+ removeVehicle(slotNumber: int): bool</text>
+  </g>
+
+  <g transform="translate(550,50)">
+    <rect x="0" y="0" width="200" height="100" fill="none" stroke="black"/>
+    <text x="100" y="25" text-anchor="middle" font-weight="bold">«interface»</text>
+    <text x="100" y="45" text-anchor="middle" font-weight="bold">ParkingQueryService</text>
+    <line x1="0" y1="55" x2="200" y2="55" stroke="black"/>
+    <text x="10" y="75">+ getStatus(): String</text>
+    <text x="10" y="90">+ getSlotNumbersByColor(color: String)</text>
+  </g>
+
+  <!-- Classes -->
+  <g transform="translate(50,250)">
+    <rect x="0" y="0" width="200" height="120" fill="none" stroke="black"/>
+    <text x="100" y="25" text-anchor="middle" font-weight="bold">Vehicle</text>
+    <line x1="0" y1="35" x2="200" y2="35" stroke="black"/>
+    <text x="10" y="55">- registrationNumber: String</text>
+    <text x="10" y="70">- color: String</text>
+    <line x1="0" y1="80" x2="200" y2="80" stroke="black"/>
+    <text x="10" y="100">+ getRegistrationNumber(): String</text>
+    <text x="10" y="115">+ getColor(): String</text>
+  </g>
+
+  <g transform="translate(550,250)">
+    <rect x="0" y="0" width="200" height="140" fill="none" stroke="black"/>
+    <text x="100" y="25" text-anchor="middle" font-weight="bold">Slot</text>
+    <line x1="0" y1="35" x2="200" y2="35" stroke="black"/>
+    <text x="10" y="55">- slotNumber: int</text>
+    <text x="10" y="70">- isAvailable: boolean</text>
+    <text x="10" y="85">- registrationNumber: String</text>
+    <text x="10" y="100">- color: String</text>
+    <line x1="0" y1="110" x2="200" y2="110" stroke="black"/>
+    <text x="10" y="130">+ parkCar(reg: String, color: String)</text>
+  </g>
+
+  <!-- Relationships -->
+  <line x1="150" y1="150" x2="150" y2="250" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="650" y1="150" x2="650" y2="250" stroke="black" marker-end="url(#arrow)"/>
+  <line x1="250" y1="100" x2="550" y2="100" stroke="black" stroke-dasharray="5,5"/>
+
+  <!-- Arrow Marker -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5"
+            markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z"/>
+    </marker>
+  </defs>
+</svg>
